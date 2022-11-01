@@ -129,20 +129,26 @@ select account_id, type, sum(amount) as total_amount from bank.trans
 # QUERY 19
 # From the previous output, translate the values for type to English, rename the column to transaction_type, 
 # round total_amount down to an integer.
-select account_id, type as transaction_type, round(sum(amount)) as total_amount from bank.trans
-	where account_id = 396
-    group by type
-    order by type;
-    
 SELECT 
 	account_id, 
 	IF(type = 'PRIJEM' ,'INCOMING', 'OUTGOING' ) AS transaction_type,
-	FLOOR(SUM(amount)) AS total_amount
-FROM bank.trans
-WHERE account_id = 396
-GROUP BY 1, 2
-ORDER BY 2;
-        
+	round(SUM(amount)) AS total_amount
+		FROM bank.trans
+		WHERE account_id = 396
+		group by type
+        order by type;
+
+# alternative
+select 
+	account_id,  
+    case type  when 'PRIJEM' then 'INCOMING' when 'VYDAJ' then 'OUTGOING' end as transaction_type , 
+	floor(sum(amount)) as sum from trans
+		where account_id = 396
+		group by transaction_type ;
+
 # QUERY 20
 # From the previous result, modify your query so that it returns only one row, 
 # with a column for incoming amount, outgoing amount and the difference.
+select account_id, floor(sum(if(type = 'PRIJEM',amount,null))) as Income, floor(sum(if(type = 'VYDAJ',amount,null))) as 'out',
+floor(sum(if(type = 'PRIJEM',amount,null))) - floor(sum(if(type = 'VYDAJ',amount,null))) as 'dif' from trans
+where account_id = 396;
