@@ -98,7 +98,7 @@ where film_id in (
 # 8
 # Customers who spent more than the average payments
 # (this refers to the average of all amount spent per each customer).
-# wrong output
+# wrong output (question unclear)
 select concat(first_name, " ", last_name) from customer
 where customer_id in (
 	select customer_id from (
@@ -108,32 +108,3 @@ where customer_id in (
     where cust_avg >(select avg(amount) from payment)
 )
 order by first_name;
-
-# correct output (question unclear)
-SELECT first_name, last_name							#--> give customer name of customer_id if customer_id in list of customer_ids below
-FROM customer
-WHERE customer_id IN 
-	(SELECT customer_id 								#--> give list of customer_ids where total amount spent by customer > average of total amount spent by customer
-    FROM 												
-		(SELECT customer_id, sum(amount) AS s 			# --> give total amount spent by customer (OUTER)
-        FROM payment									
-		GROUP BY customer_id
-        ) AS sub WHERE s > 								#--> filter total spent amount by customer (OUTER) bigger than average of total amount spent by customer (from INNER)
-			(SELECT avg(summe) FROM 					#--> give average of total amount spent by customer
-				(SELECT sum(amount) AS summe 			#--> give total amount spent by customer (INNER)
-                FROM payment							
-				GROUP BY customer_id
-				) AS sub2
-			)
-	)
-    order by first_name;
-
-/*
-SELECT avg(summe) FROM (
-SELECT sum(amount) AS summe FROM payment
-GROUP BY customer_id
-) AS sub2;
-SELECT customer_id, sum(amount) FROM payment
-GROUP BY customer_id
-ORDER BY sum(amount) DESC;
-*/
