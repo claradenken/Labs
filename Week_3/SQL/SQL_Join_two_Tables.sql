@@ -53,9 +53,17 @@ SELECT concat(a.first_name," ",a.last_name) as name, count(fa.film_id) as n_film
 left join film_actor as fa using(actor_id)
 group by a.actor_id having n_films=0;
 
-#10 	Get the addresses that has NO customers, and ends with the letter "e".
+#10	Get the addresses that has NO customers, and ends with the letter "e".
 select address, c.customer_id  from address
 left join customer as c using(address_id)
 where address like '%e' and c.customer_id is null;
 
-# (Optional) What is the most rented film?
+# (Optional) 
+# What is the most rented film?
+select title, count(f.film_id) as 'times_rented' 
+from film f
+join inventory i using(film_id)
+join rental r using(inventory_id)
+group by title 
+order by times_rented desc
+limit 2;
