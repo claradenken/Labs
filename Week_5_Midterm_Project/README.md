@@ -10,7 +10,7 @@ Goal #2: create dashboard to visualize the modeling output
 
 
 ## Brief description of the dataset(s):
-- Feature variables on a global grid (approx. 100 km x 100 km resolution, the regions are specified in the following list) taken from the assimilation (hindcast) run of seasonal forecast model GCFS2 (German Climate Forecast System) spanning the time 1980 - 2021
+- Feature variables on a global grid (approx. 100 km x 100 km resolution, the regions are specified in the following list) taken from reanalysis ERA5 (https://www.ecmwf.int/en/forecasts/datasets/reanalysis-datasets/era5) spanning the time 1980 - 2021
 	1. Sea surface temperature in the North Atlantic (October mean  <span style="color:#ac3973">SST</span>, xxx data points)
     2. Sea ice concentration in the Arctic (September + October mean <span style="color:#ac3973">SIT</span>, xxx data points)
     3. Snow depth in Eurasia (October mean <span style="color:#ac3973">SND</span>, xxx data points)
