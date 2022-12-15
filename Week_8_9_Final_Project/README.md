@@ -9,7 +9,7 @@ Use selected climate variables in the Northern hemisphere to predict the evoluti
 
 
 ## Data
-- Feature variables on a global grid (approx. 100 km x 100 km resolution, the regions are specified in the following list) taken from reanalysis ERA5 (https://www.ecmwf.int/en/forecasts/datasets/reanalysis-datasets/era5), spanning the time 1980 - 2021 for training the model, 2022 as "test data" for the prediction, ~74 000 data points per grid per year
+- Feature variables on a global grid (approx. 100 km x 100 km resolution) taken from reanalysis ERA5 (https://www.ecmwf.int/en/forecasts/datasets/reanalysis-datasets/era5), spanning the time 1980 - 2021 for training the model, 2022 as "test data" for the prediction, ~74 000 data points per grid per year
 	1. Sea surface temperature (October mean  <span style="color:#ac3973">SST</span>)
     2. Sea ice concentration (September mean <span style="color:#ac3973">SIT_sep </span>, October mean <span style="color:#ac3973">SIT_oct </span>, September + October mean <span style="color:#ac3973">SIT</span>)
     3. Snow depth (October mean <span style="color:#ac3973">SND</span>)
