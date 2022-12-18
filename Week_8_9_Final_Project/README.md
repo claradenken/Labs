@@ -5,7 +5,7 @@
 ### <span style="color:#6699ff"> \#knn \#climateScience </span>
 
 ## Goal
-Use selected climate variables in the Northern hemisphere to predict the evolution of the North Atlantic Oscillation (NAO) state in terms of the NAO index for winter 2022/23 with a nonlinear regression model based on k-nearest neighbors and a region selection algorithm
+Use selected climate variables to predict the evolution of the North Atlantic Oscillation (NAO) state in terms of the NAO index for winter 2022/23 with a nonlinear regression model based on k-nearest neighbors and a region selection algorithm
 
 
 ## Data
